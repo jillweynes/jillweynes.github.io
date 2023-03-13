@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+body {
+  background-color: black;
+  background-image: radial-gradient(
+    rgba(2, 131, 2, 0.75), black 120%
+  );
+  color: white;
+  font: 1.3rem Inconsolata, monospace;
+  text-shadow: 0 0 5px #C8C8C8;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  padding: 2rem;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(black, 0.15),
+      rgba(black, 0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+  }
+}
+    </style>
+    <style>
+        .blinking-cursor {
+  color: lightgrey;
+  animation: 1s cur step-end infinite;
+}
+
+@keyframes "cur" {
+  from, to {
+    color: transparent;
+    text-shadow: none;
+  }
+  50% {
+    color: white;
+    text-shadow: 0 0 5px #C8C8C8;
+  }
+}
+
+    </style>
+    <style>
+        a {
+            color: #aeaeae !important;
+        }
+    </style>
+</head>
+<body>
+    <pre>
+[home@web ~]$ ./disp_menu.sh
+       __   __   __       __      ____    __    ____  ___________    ____ .__   __.  _______     _______.            _______  __  .___________. __    __   __    __  .______              __    ______   
+      |  | |  | |  |     |  |     \   \  /  \  /   / |   ____\   \  /   / |  \ |  | |   ____|   /       |           /  _____||  | |           ||  |  |  | |  |  |  | |   _  \            |  |  /  __  \  
+      |  | |  | |  |     |  |      \   \/    \/   /  |  |__   \   \/   /  |   \|  | |  |__     |   (----`          |  |  __  |  | `---|  |----`|  |__|  | |  |  |  | |  |_)  |           |  | |  |  |  | 
+.--.  |  | |  | |  |     |  |       \            /   |   __|   \_    _/   |  . `  | |   __|     \   \              |  | |_ | |  |     |  |     |   __   | |  |  |  | |   _  <            |  | |  |  |  | 
+|  `--'  | |  | |  `----.|  `----.   \    /\    /    |  |____    |  |     |  |\   | |  |____.----)   |       __    |  |__| | |  |     |  |     |  |  |  | |  `--'  | |  |_)  |     __    |  | |  `--'  | 
+ \______/  |__| |_______||_______|    \__/  \__/     |_______|   |__|     |__| \__| |_______|_______/       (__)    \______| |__|     |__|     |__|  |__|  \______/  |______/     (__)   |__|  \______/  
+
+
+ The second account of <a href="https://www.willjay.rocks">WillJeynes</a>
+</pre>
+<pre> Links:</pre>
+<pre> <a href="playr">playr</a></pre>
+
+<pre>
+
+[home@web ~]$ <span class="blinking-cursor">█</span>
+</pre>
+</body>
+</html>
