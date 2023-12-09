@@ -1,0 +1,132 @@
+{
+    "apps": {
+        "http": {
+            "servers": {
+                "sirtunnel": {
+                    "listen": [
+                        ":443"
+                    ],
+                    "routes": [
+                        {
+                            "match": [
+                                {
+                                    "host": [
+                                        "stuff.willjay.rocks"
+                                    ]
+                                }
+                            ],
+                            "handle": [
+                                {
+                                    "handler": "file_server",
+                                    "root": "/home/jillpi/Documents/web"
+                                }
+                            ]
+                        },
+                        {
+                            "match": [
+                                {
+                                    "host": [
+                                        "test.willjay.rocks"
+                                    ]
+                                }
+                            ],
+                            "handle": [
+                                {
+                                    "handler": "static_response",
+                                    "body": "Reverse proxy testing area. Find out more at https://github.com/WillJeynes/SirTunnel"
+                                }
+                            ]
+                        },
+                        {
+                            "@id": "strem.test.willjay.rocks-11470",
+                            "handle": [
+                                {
+                                    "handler": "reverse_proxy",
+                                    "upstreams": [
+                                        {
+                                            "dial": ":11470"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "match": [
+                                {
+                                    "host": [
+                                        "strem.test.willjay.rocks"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "@id": "cloud.test.willjay.rocks-18080",
+                            "handle": [
+                                {
+                                    "handler": "reverse_proxy",
+                                    "upstreams": [
+                                        {
+                                            "dial": ":18080"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "match": [
+                                {
+                                    "host": [
+                                        "cloud.test.willjay.rocks"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "@id": "matrix.willjay.rocks",
+                            "handle": [
+                                {
+                                    "handler": "reverse_proxy",
+                                    "upstreams": [
+                                        {
+                                            "dial": ":81"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "match": [
+                                {
+                                    "host": [
+                                        "matrix.willjay.rocks"
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "matrix": {
+                    "listen": [
+                        ":8448"
+                    ],
+                    "routes": [
+                        {
+                            "@id": "matrix.willjay.rocks",
+                            "handle": [
+                                {
+                                    "handler": "reverse_proxy",
+                                    "upstreams": [
+                                        {
+                                            "dial": ":8449"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "match": [
+                                {
+                                    "host": [
+                                        "matrix.willjay.rocks"
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
